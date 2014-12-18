@@ -63,7 +63,7 @@ class IdeaStore
     all.group_by { |idea| idea.created_at.strftime("%H:00 %p") }
   end
 
-  def self.ideas_grouped_by_category
-    all.group_by { |idea| idea.category }
+  def self.ideas_selected_by_category(category)
+    all.select { |idea| idea.category == category }
   end
 end

@@ -12,6 +12,12 @@ body {
   height: 100%;
 }
 
+#categories_page {
+  margin: 25px 0 25px 30px;
+  width: 40%;
+  height: 100%;
+}
+
 h1, h3, a {
   font-weight: bold;
   color: #e6540b;

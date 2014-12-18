@@ -38,7 +38,7 @@ class IdeaBoxApp < Sinatra::Base
     @categories = ['Default', 'Good Idea', 'Bad Idea', 'Million Dollar Idea']
     @idea = IdeaStore.find(id.to_i)
     idea = IdeaStore.find(id.to_i)
-    # require 'pry' ; binding.pry
+    require 'pry' ; binding.pry
     erb :edit, locals: {idea: idea}
   end
 
@@ -59,11 +59,16 @@ class IdeaBoxApp < Sinatra::Base
   end
 
   get '/categories' do
+    if params[:idea] && params[:idea][:category]
+      @list_ideas = IdeaStore.ideas_selected_by_category(params[:idea][:category]) #returns a hashes
+    else
+      @list_ideas = IdeaStore.all.sort #returns an array
+    end
     @categories = ['Default', 'Good Idea', 'Bad Idea', 'Million Dollar Idea']
     erb :categories
   end
 
   get '/categories/:category' do |category|
-    erb :categories, locals: {ideas_grouped_by_category: IdeaStore.ideas_grouped_by_category}
+    erb :categories, locals: {category: category, ideas_selected_by_category: IdeaStore.ideas_selected_by_category(category)}
   end
 end

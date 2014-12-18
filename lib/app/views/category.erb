@@ -1,0 +1,16 @@
+<%= category %>
+
+<section id="idea_list">
+  <% ideas_selected_by_category.each do |category, ideas| %>
+  <h2><%= category.capitalize %></h2>
+  <ul>
+    <% ideas.each do |idea| %>
+    <li>
+      <%= idea.title %>
+      <br/>
+      <%= idea.description %>
+    </li>
+    <% end  %>
+  </ul>
+  <% end %>
+</section>

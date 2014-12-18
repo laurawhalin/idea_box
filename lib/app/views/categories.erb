@@ -1,6 +1,6 @@
-<div id="container">
+<div id="categories_page">
 
-  <form action='/' method='GET'>
+  <form action='/categories' method='GET'>
 
     <label class="category_page">
       <span>Select a Category:</span>
@@ -17,8 +17,19 @@
 
   </form>
 
-  <section>
-
+  <section id="idea_list">
+    <% @list_ideas.each do |category, ideas| %>
+    <h2><%= category %></h2>
+    <ul>
+      <% ideas.each do |idea| %>
+      <li>
+        <%= idea.title %>
+        <br/>
+        <%= idea.description %>
+      </li>
+      <% end  %>
+    </ul>
+    <% end %>
   </section>
 
 </div>

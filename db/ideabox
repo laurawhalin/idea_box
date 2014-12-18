@@ -1,9 +1,9 @@
 ---
 ideas:
 - title: Exercise
-  description: Swim the English Channel
+  description: Swim the English Channel!
+  created_at: 2014-12-18 06:46:03.705580000 -07:00
   category: Bad Idea
-  created_at: 2014-12-17 16:41:45.422347000 -07:00
 - title: Try something new
   description: Eat a grasshopper
   rank: 1
@@ -12,5 +12,5 @@ ideas:
   category: Bad Idea
 - title: What time is it?
   description: The time is...
-  category: Default
-  created_at: 2014-12-18 08:37:57.909896000 -07:00
+  created_at: 2014-12-18 06:46:03.705580000 -07:00
+  category: Good Idea
