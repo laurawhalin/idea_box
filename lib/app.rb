@@ -38,12 +38,12 @@ class IdeaBoxApp < Sinatra::Base
     @categories = ['Default', 'Good Idea', 'Bad Idea', 'Million Dollar Idea']
     @idea = IdeaStore.find(id.to_i)
     idea = IdeaStore.find(id.to_i)
-    require 'pry' ; binding.pry
     erb :edit, locals: {idea: idea}
   end
 
   put '/:id' do |id|
-    IdeaStore.update(id.to_i, params[:idea])
+    idea = IdeaStore.find(id.to_i)
+    IdeaStore.update(id.to_i, idea.to_h)
     redirect '/'
   end
 
