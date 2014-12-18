@@ -7,21 +7,26 @@ class IdeaBoxApp < Sinatra::Base
   set :method_override, true
   set :root, 'lib/app'
 
+  register Sinatra::Partial
+  set :partial_template_engine, :erb
+
   configure :development do
     register Sinatra::Reloader
   end
 
+  not_found do
+    erb :error
+  end
+
   get '/' do
-    erb :index, locals: {ideas: IdeaStore.all.sort, idea: Idea.new(params), categories: IdeaStore.category_options}
+    @categories = ['Default', 'Good Idea', 'Bad Idea', 'Million Dollar Idea']
+    @list_ideas = IdeaStore.all.sort
+    erb :index, locals: {idea: Idea.new(params)}
   end
 
   post '/' do
     IdeaStore.create(params[:idea], Time.now)
     redirect '/'
-  end
-
-  not_found do
-    erb :error
   end
 
   delete '/:id' do |id|
@@ -30,8 +35,11 @@ class IdeaBoxApp < Sinatra::Base
   end
 
   get '/:id/edit' do |id|
+    @categories = ['Default', 'Good Idea', 'Bad Idea', 'Million Dollar Idea']
+    @idea = IdeaStore.find(id.to_i)
     idea = IdeaStore.find(id.to_i)
-    erb :edit, locals: {idea: idea, categories: IdeaStore.category_options}
+    # require 'pry' ; binding.pry
+    erb :edit, locals: {idea: idea}
   end
 
   put '/:id' do |id|
@@ -47,10 +55,15 @@ class IdeaBoxApp < Sinatra::Base
   end
 
   get '/statistics' do
-    ideas_grouped_by_hours = IdeaStore.all.group_by { |idea| idea.created_at.strftime("%H:00 %p")}
-    ideas_grouped_by_days  = IdeaStore.all.group_by { |idea| idea.created_at.strftime("%A")}
-    erb :statistics, locals: {ideas_grouped_by_hours: ideas_grouped_by_hours, ideas_grouped_by_days: ideas_grouped_by_days}  #take all the ideas(grouped by hours), then access individual ideas with their time, display the title of that idea in the page
+    erb :statistics, locals: {ideas_grouped_by_hours: IdeaStore.ideas_grouped_by_hours, ideas_grouped_by_days: IdeaStore.ideas_grouped_by_days}
   end
 
+  get '/categories' do
+    @categories = ['Default', 'Good Idea', 'Bad Idea', 'Million Dollar Idea']
+    erb :categories
+  end
 
+  get '/categories/:category' do |category|
+    erb :categories, locals: {ideas_grouped_by_category: IdeaStore.ideas_grouped_by_category}
+  end
 end

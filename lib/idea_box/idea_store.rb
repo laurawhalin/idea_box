@@ -55,7 +55,15 @@ class IdeaStore
     end
   end
 
-  def self.category_options
-    ['Default', 'Good Idea', 'Bad Idea', 'Million Dollar Idea']
+  def self.ideas_grouped_by_days
+    all.group_by { |idea| idea.created_at.strftime("%A") }
+  end
+
+  def self.ideas_grouped_by_hours
+    all.group_by { |idea| idea.created_at.strftime("%H:00 %p") }
+  end
+
+  def self.ideas_grouped_by_category
+    all.group_by { |idea| idea.category }
   end
 end

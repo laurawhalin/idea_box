@@ -1,0 +1,24 @@
+<div id="container">
+
+  <form action='/' method='GET'>
+
+    <label class="category_page">
+      <span>Select a Category:</span>
+      <select name="idea[category]">
+        <%= partial :'partials/category', collection: @categories %>
+      </select>
+    </label>
+
+    <label>
+      <label>
+        <input class="button" type='submit'/>
+      </label>
+    </label>
+
+  </form>
+
+  <section>
+
+  </section>
+
+</div>

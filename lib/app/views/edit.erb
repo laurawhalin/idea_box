@@ -1,18 +1,17 @@
 <div id="container">
-  <h1>IdeaBox</h1>
 
-<section id="enter_ideas"
+<section id="enter_ideas">
   <form action='/<%= idea.id %>' method='POST'>
-    <p>This idea was created at <%= idea.created_at %>
     <h2>
       <% if idea.id %>
-      Edit your Idea:
+        Edit your Idea:
       <% else %>
-      Your Idea:
+        Your Idea:
       <% end %>
     </h2>
+
     <% if idea.id %>
-    <input type="hidden" name="_method" value="PUT" />
+      <input type="hidden" name="_method" value="PUT" />
     <% end %>
 
     <label class="idea_title">
@@ -25,23 +24,17 @@
       <textarea name='idea[description]'><%= idea.description %></textarea><br/>
     </label>
 
-    <label class="categories">
+    <label class="category_selector">
       <span>Category:</span>
       <select id="drop-menu" name="idea[category]">
-        <% categories.each do | category | %>
-        <% if idea.category == category %>
-          <option selected><%= category %></option>
-        <% else %>
-          <option><%= category %></option>
-        <% end %>
-        <% end %>
+        <%= partial :'partials/edit_category', collection: @categories %>
       </select>
     </label>
 
     <label>
-      <input class="button" type='submit'/>
+      <input class="button" type='submit' />
     </label>
-    
+
   </form>
 </section> <!-- end enter_ideas -->
 </div> <!-- end container -->
