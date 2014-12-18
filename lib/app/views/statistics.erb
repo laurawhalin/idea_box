@@ -1,0 +1,36 @@
+<section id="idea_list">
+  <h2>Ideas by the Hour</h2>
+  <ul>
+  <% ideas_grouped_by_hours.each do |hour, ideas| %>
+    <li><%= hour %>
+      <ul>
+        <% ideas.each do |idea| %>
+        <li>
+          <%= idea.title %>
+          <br/>
+          <%= idea.description %>
+        </li>
+        <% end %>
+      </ul>
+    </li>
+    <% end %>
+  </ul>
+</section> <!-- end idea_list -->
+<section id="idea_list">
+  <h2>Ideas by the Day</h2>
+  <ul>
+  <% ideas_grouped_by_days.each do |day, ideas| %>
+    <li><%= day %>
+      <ul>
+        <% ideas.each do |idea| %>
+        <li>
+          <%= idea.title %>
+          <br/>
+          <%= idea.description %>
+        </li>
+        <% end %>
+      </ul>
+    </li>
+    <% end %>
+  </ul>
+</section> <!-- end idea_list-->

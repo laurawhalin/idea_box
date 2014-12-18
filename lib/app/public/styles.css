@@ -1,0 +1,116 @@
+body {
+  background: url(images/pencils2.jpg) 250 0 no-repeat #F2F2F2;
+  background-attachment: fixed;
+}
+
+#container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 95%;
+  height: 100%;
+  text-align: left;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+h1, h3, a {
+  font-weight: bold;
+  color: #e6540b;
+}
+
+h1 {
+  margin-top: 15px;
+}
+
+h2 {
+  padding: 10px 15px;
+  margin-top: 0px;
+  display: block;
+  background-color: #74AB54;
+  color: #fff;
+}
+
+a {
+  text-decoration: none;
+}
+
+input[type="text"],
+textarea {
+  font-size: 14px;
+}
+
+#enter_ideas {
+  width: 500px;
+  display:block;
+  overflow:auto;
+  padding; 0 15px;
+  margin-bottom: 25px;
+  background-color: #fff;
+  border: 1px solid #ABAAAD;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+}
+
+.idea_title {
+  display: block;
+  margin: 0 15px 20px 15px;
+}
+
+.idea_title span {
+  float: left;
+}
+
+.idea_title input {
+  width: 340px;
+  height: 25px;
+  float: right;
+  border: 1px solid #ABAAAD;
+  padding-left: 2px;
+}
+
+.idea_description {
+  display: block;
+  margin: 0 15px 10px 15px;
+}
+
+.idea_description span {
+  float: left;
+}
+
+.idea_description textarea {
+  width: 340px;
+  height: 50px;
+  float: right;
+  border: 1px solid #ABAAAD;
+}
+
+#idea_list {
+  width: 500px;
+  margin-bottom: 25px;
+  display:block;
+  overflow:auto;
+  background-color: #fff;
+  border: 1px solid #ABAAAD;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+}
+
+.button {
+  float: right;
+  clear: both;
+  background-color: #e6540b;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-border-radius: 5px;
+  border: none;
+  padding: 10px 25px;
+  margin: 15px;
+  font-size: 16px;
+  color: #FFF;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #BF460A;
+}
