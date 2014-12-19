@@ -19,15 +19,15 @@
 
   <section id="idea_list">
     <% @list_ideas.each do |category, ideas| %>
-    <h2><%= category %></h2>
+    <h2><%= category || "All Categories" %></h2>
     <ul>
-      <% ideas.each do |idea| %>
+      <!-- <%# category.each do |ideas| %> -->
       <li>
-        <%= idea.title %>
+        <%= ideas.title %>
         <br/>
-        <%= idea.description %>
+        <%= ideas.description %>
       </li>
-      <% end  %>
+      <!-- <%# end  %> -->
     </ul>
     <% end %>
   </section>
